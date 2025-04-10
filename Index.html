@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$TIT</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .glitch-header {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+      animation: glitch 2s infinite;
+    }
+
+    .terminal {
+      background-color: #111;
+      border: 1px solid #0f0;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    .terminal-header {
+      border-bottom: 1px solid #0f0;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      margin: 0;
+    }
+
+    .loader {
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(to right, #0f0 0%, #111 50%, #111 100%);
+      background-size: 200% 100%;
+      animation: load 2s infinite;
+    }
+
+    .chart {
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      margin: 20px 0;
+    }
+
+    .bar {
+      background-color: #0f0;
+      width: 20px;
+      height: 20px;
+      box-shadow: 0 0 5px #0f0;
+      animation: rise 0.5s ease-out forwards;
+    }
+
+    .progress {
+      background-color: #111;
+      border: 1px solid #0f0;
+      height: 20px;
+      margin: 10px 0;
+      position: relative;
+    }
+
+    .progress-bar {
+      background-color: #0f0;
+      height: 100%;
+      width: 75%;
+      animation: progress 3s ease-in-out;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .stat-box {
+      background-color: #111;
+      border: 1px solid #0f0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #0f0;
+    }
+
+    .button {
+      background-color: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      transition: all 0.3s;
+      margin: 5px;
+    }
+
+    .button:hover {
+      background-color: #0f0;
+      color: #000;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes glitch {
+      0%, 100% { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; }
+      25% { text-shadow: -2px 0 #f00, 2px 0 #0ff; }
+      50% { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0; }
+      75% { text-shadow: 2px 0 #f00, -2px 0 #0ff; }
+    }
+
+    @keyframes load {
+      0% { background-position: 100% 0; }
+      100% { background-position: 0 0; }
+    }
+
+    @keyframes rise {
+      from { height: 0; }
+    }
+
+    @keyframes progress {
+      from { width: 0; }
+    }
+    
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    
+    .insider-list {
+      margin-top: 20px;
+    }
+    
+    .insider {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-left: 2px solid #0f0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix-canvas"></canvas>
+  
+  <div class="container">
+    <h1 class="glitch-header">$TIT - TRUMP INSIDER TRADING TOKEN</h1>
+    <div class="loader"></div>
+    
+    <div class="terminal">
+      <div class="terminal-header">
+        <span>Trump Insider Trading</span>
+        <span class="blink">█</span>
+      </div>
+      <pre>
+> INITIALIZING MARKET ANALYSIS MODULE...
+> CONNECTING TO SOLANA BLOCKCHAIN...
+> SCANNING WALLETS FOR $TIT TRANSACTIONS...
+> TRACKING INSIDER ACTIVITY...
+> ANALYZING 9:30 AM TWEET CORRELATION...
+> BUILDING TRANSACTION GRAPH...
+
+[STATUS]: <span class="blink">INVESTIGATION IN PROGRESS</span>
+      </pre>
+    </div>
+    
+    <div class="stats">
+      <div class="stat-box">
+        <h3>$TIT TOKEN STATS</h3>
+        <p>Total Supply: 1,000,000,000 $TIT</p>
+        <p>Current Price: $0.0047 (+341%)</p>
+        <p>Market Cap: $4,700,000</p>
+        <p>Holders: 3,721</p>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <p>Liquidity: $780,000</p>
+      </div>
+      
+      <div class="stat-box">
+        <h3>INSIDER PROFITS</h3>
+        <p>Detected Wallets: 27</p>
+        <p>Total Volume: $9,430,000</p>
+        <p>Estimated Profit: $2,170,000</p>
+        <p>Avg. Transaction Time: 4.7 mins after tweet</p>
+        <p>Profit Correlation: 94.3%</p>
+      </div>
+    </div>
+    
+    <div class="terminal">
+      <div class="terminal-header">
+        <span>$ profit_tracker.sh</span>
+        <span class="blink">█</span>
+      </div>
+      <div class="chart">
+        <!-- Dynamically create bars with random heights -->
+        <script>
+          document.write(Array.from({length: 30}, () => {
+            const height = Math.floor(Math.random() * 150) + 20;
+            return `<div class="bar" style="height: ${height}px"></div>`;
+          }).join(''));
+        </script>
+      </div>
+      <div class="insider-list">
+        <h3>TOP INSIDER WALLETS:</h3>
+        <div class="insider">
+          <p>Wallet: 7xF4hG...j29q (Profit: $427,000)</p>
+          <p>First Buy: 9:32 AM - 2 mins after tweet</p>
+        </div>
+        <div class="insider">
+          <p>Wallet: 9qR2zX...p45L (Profit: $312,000)</p>
+          <p>First Buy: 9:31 AM - 1 min after tweet</p>
+        </div>
+        <div class="insider">
+          <p>Wallet: 3vT8kW...s67D (Profit: $298,000)</p>
+          <p>First Buy: 9:33 AM - 3 mins after tweet</p>
+        </div>
+        <div class="insider">
+          <p>Wallet: 5cB1nM...f12P (Profit: $243,000)</p>
+          <p>First Buy: 9:34 AM - 4 mins after tweet</p>
+        </div>
+        <div class="insider">
+          <p>Wallet: 2jZ7vQ...h89R (Profit: $195,000)</p>
+          <p>First Buy: 9:32 AM - 2 mins after tweet</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="buttons">
+      <button class="button">TRACK WALLETS</button>
+      <button class="button">ANALYZE TWEET</button>
+      <button class="button">CONNECT WALLET</button>
+      <button class="button">BUY $TIT</button>
+      <button class="button">VIEW WHITEPAPER</button>
+    </div>
+    
+    <div class="terminal">
+      <div class="terminal-header">
+        <span>$ motd.sh</span>
+        <span class="blink">█</span>
+      </div>
+      <pre>
+DISCLAIMER: This is a Trump Insider Trading  website. All data is proof of $TIT.
+$TIT token represents a commentary on potential insider trading.
+Trump Insider Trading blockchain analysis or accusation of wrongdoing is implied.
+This page is for insiders only.
+
+[WARNING]: <span class="blink">USE AT YOUR OWN RISK</span>
+      </pre>
+    </div>
+  </div>
+
+  <script>
+    // Matrix rain effect
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const chars = '01TITSCANDALTRUMP$SOLANA';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    
+    const drops = [];
+    for (let i = 0; i < columns; i++) {
+      drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+    }
+    
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#0f0';
+      ctx.font = fontSize + 'px monospace';
+      
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        
+        drops[i]++;
+      }
+    }
+    
+    setInterval(draw, 35);
+    
+    // Make bars in chart random heights
+    const bars = document.querySelectorAll('.bar');
+    bars.forEach(bar => {
+      const height = Math.floor(Math.random() * 150) + 20;
+      bar.style.height = height + 'px';
+    });
+  </script>
+</body>
+</html>
